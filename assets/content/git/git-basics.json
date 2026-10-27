@@ -1,0 +1,75 @@
+{
+  "id": "git-basics",
+  "title": "Git: основы",
+  "subtitle": "init, add, commit, log, .gitignore",
+  "icon": "fork",
+  "order": 1,
+  "blocks": [
+    {
+      "type": "heading",
+      "text": "Настройка"
+    },
+    {
+      "type": "code",
+      "language": "bash",
+      "text": "git config --global user.name \"Ваше Имя\"\ngit config --global user.email \"you@example.com\""
+    },
+    {
+      "type": "heading",
+      "text": "Первый репозиторий"
+    },
+    {
+      "type": "code",
+      "language": "bash",
+      "text": "git init\ngit status\ngit add .\ngit commit -m \"Первый коммит\"\ngit log --oneline"
+    },
+    {
+      "type": "heading",
+      "text": "Три области"
+    },
+    {
+      "type": "list",
+      "items": [
+        "рабочий каталог — ваши файлы",
+        "индекс (staging) — то, что попадёт в следующий коммит (`git add`)",
+        "репозиторий — сохранённая история (`git commit`)"
+      ]
+    },
+    {
+      "type": "heading",
+      "text": "Просмотр изменений"
+    },
+    {
+      "type": "code",
+      "language": "bash",
+      "text": "git diff              # что изменено, но не добавлено\ngit diff --staged     # что добавлено и ждёт коммита"
+    },
+    {
+      "type": "heading",
+      "text": ".gitignore"
+    },
+    {
+      "type": "paragraph",
+      "text": "Файл со списком того, что не нужно отслеживать:"
+    },
+    {
+      "type": "code",
+      "language": "text",
+      "text": "node_modules/\n.env\n*.log\nbuild/"
+    },
+    {
+      "type": "note",
+      "kind": "warning",
+      "text": "Никогда не коммитьте пароли и ключи (`.env`). Если ключ попал в историю, считайте его скомпрометированным и замените."
+    },
+    {
+      "type": "heading",
+      "text": "Отмена"
+    },
+    {
+      "type": "code",
+      "language": "bash",
+      "text": "git restore file.txt          # откатить изменения в файле\ngit restore --staged file.txt # убрать из индекса\ngit commit --amend            # поправить последний коммит"
+    }
+  ]
+}

@@ -1,0 +1,74 @@
+{
+  "id": "laravel-mvc",
+  "title": "Laravel и MVC",
+  "subtitle": "Маршруты, контроллеры, модели, шаблоны",
+  "icon": "layers",
+  "order": 2,
+  "blocks": [
+    {
+      "type": "heading",
+      "text": "Идея MVC"
+    },
+    {
+      "type": "paragraph",
+      "text": "MVC разделяет приложение на три роли, чтобы код не превращался в кашу:"
+    },
+    {
+      "type": "list",
+      "items": [
+        "Model — данные и работа с базой (в Laravel это Eloquent)",
+        "View — то, что видит пользователь (шаблоны Blade)",
+        "Controller — принимает запрос, обращается к модели и отдаёт view"
+      ]
+    },
+    {
+      "type": "heading",
+      "text": "Путь запроса"
+    },
+    {
+      "type": "steps",
+      "items": [
+        "Браузер запрашивает `/posts`",
+        "`routes/web.php` находит нужный контроллер",
+        "Контроллер берёт данные через модель",
+        "Данные передаются во view, и клиенту уходит HTML"
+      ]
+    },
+    {
+      "type": "heading",
+      "text": "Маршрут"
+    },
+    {
+      "type": "code",
+      "language": "php",
+      "text": "// routes/web.php\nuse App\\Http\\Controllers\\PostController;\n\nRoute::get('/posts', [PostController::class, 'index']);"
+    },
+    {
+      "type": "heading",
+      "text": "Контроллер"
+    },
+    {
+      "type": "code",
+      "language": "php",
+      "text": "// app/Http/Controllers/PostController.php\npublic function index()\n{\n    $posts = Post::latest()->get();\n\n    return view('posts.index', ['posts' => $posts]);\n}"
+    },
+    {
+      "type": "heading",
+      "text": "Шаблон Blade"
+    },
+    {
+      "type": "code",
+      "language": "html",
+      "text": "{{-- resources/views/posts/index.blade.php --}}\n@foreach ($posts as $post)\n    <h2>{{ $post->title }}</h2>\n@endforeach"
+    },
+    {
+      "type": "heading",
+      "text": "Artisan"
+    },
+    {
+      "type": "code",
+      "language": "bash",
+      "text": "php artisan serve\nphp artisan make:model Post -mcr   # модель + миграция + контроллер + resource\nphp artisan migrate"
+    }
+  ]
+}

@@ -1,0 +1,76 @@
+{
+  "id": "debian",
+  "title": "Debian",
+  "subtitle": "Ветки, репозитории, apt и dpkg",
+  "icon": "layers",
+  "order": 2,
+  "blocks": [
+    {
+      "type": "heading",
+      "text": "Что это"
+    },
+    {
+      "type": "paragraph",
+      "text": "Debian — один из старейших дистрибутивов (с 1993 года), на нём основаны Ubuntu, Linux Mint и многие другие. Известен стабильностью и строгим отношением к свободному ПО."
+    },
+    {
+      "type": "heading",
+      "text": "Ветки Debian"
+    },
+    {
+      "type": "list",
+      "items": [
+        "`stable` — для серверов: пакеты проверены, меняются только исправления и обновления безопасности",
+        "`testing` — кандидат на следующий stable: свежее, но иногда ломается",
+        "`unstable` (sid) — самое новое, для разработчиков дистрибутива"
+      ]
+    },
+    {
+      "type": "heading",
+      "text": "Репозитории"
+    },
+    {
+      "type": "paragraph",
+      "text": "Источники пакетов описаны в `/etc/apt/sources.list` и в файлах каталога `/etc/apt/sources.list.d/`. В новых релизах может использоваться формат deb822 (файл `debian.sources`)."
+    },
+    {
+      "type": "code",
+      "language": "text",
+      "text": "deb http://deb.debian.org/debian bookworm main contrib non-free-firmware"
+    },
+    {
+      "type": "note",
+      "kind": "info",
+      "text": "Замените `bookworm` на кодовое имя вашего релиза. После правки выполните `sudo apt update`."
+    },
+    {
+      "type": "heading",
+      "text": "apt и dpkg"
+    },
+    {
+      "type": "list",
+      "items": [
+        "`apt` — удобный интерфейс, сам подтягивает зависимости из репозиториев",
+        "`dpkg` — низкоуровневый инструмент для работы с отдельными .deb-файлами"
+      ]
+    },
+    {
+      "type": "code",
+      "language": "bash",
+      "text": "sudo dpkg -i package.deb      # установить .deb\nsudo apt install -f          # доустановить недостающие зависимости\ndpkg -l | grep nginx         # найти установленный пакет\ndpkg -L nginx                # какие файлы поставил пакет"
+    },
+    {
+      "type": "heading",
+      "text": "sudo в минимальной установке"
+    },
+    {
+      "type": "paragraph",
+      "text": "Если при установке был задан пароль root, `sudo` может быть не установлен. Тогда:"
+    },
+    {
+      "type": "code",
+      "language": "bash",
+      "text": "su -\napt install sudo\nusermod -aG sudo ваш_пользователь"
+    }
+  ]
+}

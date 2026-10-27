@@ -1,0 +1,105 @@
+{
+  "id": "bash-scripts",
+  "title": "Bash-скрипты",
+  "subtitle": "Переменные, условия, циклы, функции",
+  "icon": "description",
+  "order": 5,
+  "blocks": [
+    {
+      "type": "heading",
+      "text": "Первый скрипт"
+    },
+    {
+      "type": "code",
+      "language": "bash",
+      "text": "#!/usr/bin/env bash\necho \"Привет, мир!\""
+    },
+    {
+      "type": "steps",
+      "items": [
+        "Сохраните код в файл `hello.sh`",
+        "Сделайте его исполняемым: `chmod +x hello.sh`",
+        "Запустите: `./hello.sh`"
+      ]
+    },
+    {
+      "type": "heading",
+      "text": "Безопасный режим"
+    },
+    {
+      "type": "paragraph",
+      "text": "Первой строкой после shebang почти всегда стоит:"
+    },
+    {
+      "type": "code",
+      "language": "bash",
+      "text": "set -euo pipefail"
+    },
+    {
+      "type": "list",
+      "items": [
+        "`-e` — остановить скрипт при первой ошибке",
+        "`-u` — ошибка при использовании неопределённой переменной",
+        "`-o pipefail` — ошибка в любой части пайпа считается ошибкой всего пайпа"
+      ]
+    },
+    {
+      "type": "heading",
+      "text": "Переменные и аргументы"
+    },
+    {
+      "type": "code",
+      "language": "bash",
+      "text": "name=\"Мир\"\necho \"Привет, $name\"\n\necho \"Первый аргумент: $1\"\necho \"Всего аргументов: $#\"\necho \"Все аргументы: $@\""
+    },
+    {
+      "type": "note",
+      "kind": "tip",
+      "text": "Всегда берите переменные в двойные кавычки: `\"$file\"`. Иначе имена с пробелами сломают скрипт."
+    },
+    {
+      "type": "heading",
+      "text": "Условия"
+    },
+    {
+      "type": "code",
+      "language": "bash",
+      "text": "if [[ -f \"$file\" ]]; then\n  echo \"Файл существует\"\nelif [[ -d \"$file\" ]]; then\n  echo \"Это каталог\"\nelse\n  echo \"Не найдено\"\nfi"
+    },
+    {
+      "type": "list",
+      "items": [
+        "`-f` — файл существует, `-d` — каталог существует",
+        "`-z \"$s\"` — строка пустая",
+        "`-eq`, `-ne`, `-lt`, `-gt` — сравнение чисел"
+      ]
+    },
+    {
+      "type": "heading",
+      "text": "Циклы"
+    },
+    {
+      "type": "code",
+      "language": "bash",
+      "text": "for f in *.log; do\n  echo \"Обрабатываю $f\"\ndone\n\nwhile read -r line; do\n  echo \"$line\"\ndone < input.txt"
+    },
+    {
+      "type": "heading",
+      "text": "Функции"
+    },
+    {
+      "type": "code",
+      "language": "bash",
+      "text": "log() {\n  echo \"[$(date +%H:%M:%S)] $*\"\n}\n\nlog \"Старт\""
+    },
+    {
+      "type": "heading",
+      "text": "Пример: резервная копия"
+    },
+    {
+      "type": "code",
+      "language": "bash",
+      "text": "#!/usr/bin/env bash\nset -euo pipefail\n\nSRC=\"${1:?Укажите каталог для копирования}\"\nDEST=\"$HOME/backups\"\nSTAMP=\"$(date +%Y-%m-%d_%H-%M)\"\n\nmkdir -p \"$DEST\"\ntar -czf \"$DEST/backup_$STAMP.tar.gz\" -C \"$SRC\" .\necho \"Готово: $DEST/backup_$STAMP.tar.gz\""
+    }
+  ]
+}

@@ -1,0 +1,54 @@
+{
+  "id": "javascript-dom",
+  "title": "JavaScript и DOM",
+  "subtitle": "Поиск элементов, события, fetch",
+  "icon": "javascript",
+  "order": 2,
+  "blocks": [
+    {
+      "type": "heading",
+      "text": "DOM"
+    },
+    {
+      "type": "paragraph",
+      "text": "DOM — дерево элементов страницы, которым JavaScript может управлять."
+    },
+    {
+      "type": "code",
+      "language": "javascript",
+      "text": "const title = document.querySelector('h1');\ntitle.textContent = 'Новый заголовок';\n\nconst items = document.querySelectorAll('.item');\nitems.forEach((el) => el.classList.add('active'));"
+    },
+    {
+      "type": "heading",
+      "text": "События"
+    },
+    {
+      "type": "code",
+      "language": "javascript",
+      "text": "const btn = document.querySelector('#save');\nbtn.addEventListener('click', (event) => {\n  event.preventDefault();\n  console.log('Нажато');\n});"
+    },
+    {
+      "type": "heading",
+      "text": "Создание элементов"
+    },
+    {
+      "type": "code",
+      "language": "javascript",
+      "text": "const li = document.createElement('li');\nli.textContent = 'Новый пункт';\ndocument.querySelector('ul').append(li);"
+    },
+    {
+      "type": "heading",
+      "text": "Запрос к серверу"
+    },
+    {
+      "type": "code",
+      "language": "javascript",
+      "text": "async function loadPosts() {\n  const res = await fetch('/api/posts');\n  if (!res.ok) throw new Error(`HTTP ${res.status}`);\n  return res.json();\n}"
+    },
+    {
+      "type": "note",
+      "kind": "warning",
+      "text": "Для вставки текста пользователя используйте `textContent`, а не `innerHTML` — иначе возможна XSS-уязвимость."
+    }
+  ]
+}

@@ -1,0 +1,69 @@
+{
+  "id": "arch",
+  "title": "Arch Linux",
+  "subtitle": "Rolling release, pacman и AUR",
+  "icon": "speed",
+  "order": 3,
+  "blocks": [
+    {
+      "type": "heading",
+      "text": "Что это"
+    },
+    {
+      "type": "paragraph",
+      "text": "Arch Linux — дистрибутив с постоянными обновлениями (rolling release): один раз установили и потом просто обновляетесь. Следует принципу KISS, система собирается «с нуля» под себя. Главное достоинство — Arch Wiki, лучшая документация по Linux."
+    },
+    {
+      "type": "heading",
+      "text": "Установка"
+    },
+    {
+      "type": "paragraph",
+      "text": "Устанавливается из live-образа вручную или с помощью скрипта `archinstall`:"
+    },
+    {
+      "type": "code",
+      "language": "bash",
+      "text": "archinstall"
+    },
+    {
+      "type": "heading",
+      "text": "pacman — менеджер пакетов"
+    },
+    {
+      "type": "code",
+      "language": "bash",
+      "text": "sudo pacman -Syu              # обновить всю систему\nsudo pacman -S git             # установить пакет\nsudo pacman -Rns package       # удалить пакет с зависимостями и конфигами\npacman -Ss query               # поиск в репозиториях\npacman -Qi package             # информация об установленном пакете\npacman -Qe                     # пакеты, установленные явно"
+    },
+    {
+      "type": "note",
+      "kind": "warning",
+      "text": "Не делайте частичных обновлений (`pacman -Sy пакет` без `-u`). Arch их не поддерживает и такая система может сломаться. Всегда `-Syu`."
+    },
+    {
+      "type": "heading",
+      "text": "AUR"
+    },
+    {
+      "type": "paragraph",
+      "text": "AUR — пользовательский репозиторий сборочных рецептов (PKGBUILD). Это неофициальный источник, поэтому перед сборкой читайте PKGBUILD."
+    },
+    {
+      "type": "code",
+      "language": "bash",
+      "text": "sudo pacman -S --needed base-devel git\ngit clone https://aur.archlinux.org/yay.git\ncd yay\nmakepkg -si"
+    },
+    {
+      "type": "heading",
+      "text": "Полезные привычки"
+    },
+    {
+      "type": "list",
+      "items": [
+        "Перед крупным обновлением читайте новости на archlinux.org",
+        "При проблемах смотрите журнал: `journalctl -p 3 -xb`",
+        "Сначала ищите ответ в Arch Wiki"
+      ]
+    }
+  ]
+}

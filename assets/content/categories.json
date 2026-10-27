@@ -1,0 +1,58 @@
+[
+  {
+    "id": "backend",
+    "title": "Backend",
+    "subtitle": "Серверная логика, API, фреймворки",
+    "folder": "backend",
+    "icon": "dns"
+  },
+  {
+    "id": "frontend",
+    "title": "Frontend",
+    "subtitle": "Интерфейсы, HTML/CSS, JavaScript, React",
+    "folder": "frontend",
+    "icon": "code"
+  },
+  {
+    "id": "git",
+    "title": "Git",
+    "subtitle": "Ветки, коммиты, pull request",
+    "folder": "git",
+    "icon": "fork"
+  },
+  {
+    "id": "code",
+    "title": "Код",
+    "subtitle": "JavaScript и TypeScript: основы и асинхронность",
+    "folder": "code",
+    "icon": "data_object"
+  },
+  {
+    "id": "databases",
+    "title": "Базы данных",
+    "subtitle": "SQL, PostgreSQL, индексы",
+    "folder": "databases",
+    "icon": "storage"
+  },
+  {
+    "id": "linux",
+    "title": "Linux",
+    "subtitle": "Дистрибутивы, команды Bash, скрипты, сервер",
+    "folder": "linux",
+    "icon": "terminal"
+  },
+  {
+    "id": "devops",
+    "title": "DevOps",
+    "subtitle": "Docker, CI/CD, Nginx",
+    "folder": "devops",
+    "icon": "loop"
+  },
+  {
+    "id": "wraper",
+    "title": "Trambl",
+    "subtitle": "Vizart Vi",
+    "folder": "wrap",
+    "icon": "loop"
+  }
+]

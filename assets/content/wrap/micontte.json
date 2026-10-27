@@ -1,0 +1,18 @@
+{
+  "id": "php-basics",
+  "title": "Road map: this theme",
+  "subtitle": "Title description",
+  "icon": "code",
+  "order": 1,
+  "blocks": [
+    {
+      "type": "heading",
+      "text": "Что eto такое"
+    } ,
+    {
+      "type": "code",
+      "language": "small",
+      "text": "branden brander\nвстроенный сервер в текущем каталоге"
+    }
+  ]
+}

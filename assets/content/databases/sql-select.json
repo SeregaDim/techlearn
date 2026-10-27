@@ -1,0 +1,54 @@
+{
+  "id": "sql-select",
+  "title": "SQL: SELECT",
+  "subtitle": "Выборка, фильтры, сортировка, группировка",
+  "icon": "table",
+  "order": 1,
+  "blocks": [
+    {
+      "type": "heading",
+      "text": "Таблица для примеров"
+    },
+    {
+      "type": "code",
+      "language": "sql",
+      "text": "CREATE TABLE users (\n  id         SERIAL PRIMARY KEY,\n  name       TEXT NOT NULL,\n  city       TEXT,\n  created_at TIMESTAMP DEFAULT now()\n);"
+    },
+    {
+      "type": "heading",
+      "text": "Выборка"
+    },
+    {
+      "type": "code",
+      "language": "sql",
+      "text": "SELECT id, name\nFROM users\nWHERE city = 'Кишинёв'\nORDER BY created_at DESC\nLIMIT 10;"
+    },
+    {
+      "type": "heading",
+      "text": "Группировка"
+    },
+    {
+      "type": "code",
+      "language": "sql",
+      "text": "SELECT city, COUNT(*) AS total\nFROM users\nGROUP BY city\nHAVING COUNT(*) > 5\nORDER BY total DESC;"
+    },
+    {
+      "type": "paragraph",
+      "text": "`WHERE` фильтрует строки до группировки, `HAVING` — группы после неё."
+    },
+    {
+      "type": "heading",
+      "text": "Изменение данных"
+    },
+    {
+      "type": "code",
+      "language": "sql",
+      "text": "INSERT INTO users (name, city) VALUES ('Анна', 'Кишинёв');\n\nUPDATE users SET city = 'Тирасполь' WHERE id = 1;\n\nDELETE FROM users WHERE id = 1;"
+    },
+    {
+      "type": "note",
+      "kind": "warning",
+      "text": "Всегда пишите `WHERE` в `UPDATE` и `DELETE`. Без него изменятся или удалятся все строки таблицы."
+    }
+  ]
+}

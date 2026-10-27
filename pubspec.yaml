@@ -1,0 +1,35 @@
+name: techlearn
+description: TechLearn — обучающее приложение, контент хранится в JSON-файлах по каталогам.
+publish_to: 'none'
+version: 1.0.0+1
+
+environment:
+  sdk: '>=3.4.0 <4.0.0'
+
+dependencies:
+  flutter:
+    sdk: flutter
+  shared_preferences: ^2.2.3
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+  flutter_lints: ^4.0.0
+
+flutter:
+  uses-material-design: true
+
+  # Flutter не заходит в подпапки автоматически: каждый каталог раздела
+  # нужно перечислить здесь ОДИН раз. Новые JSON-файлы внутри уже
+  # перечисленного каталога подхватываются сами, ничего менять не надо.
+  assets:
+    - assets/images/
+    - assets/content/            # categories.json
+    - assets/content/backend/
+    - assets/content/frontend/
+    - assets/content/git/
+    - assets/content/code/
+    - assets/content/databases/
+    - assets/content/linux/
+    - assets/content/devops/
+    - assets/content/wrap/

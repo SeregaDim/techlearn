@@ -1,0 +1,15 @@
+{
+  "id": "new-topic",
+  "title": "Название темы",
+  "subtitle": "Короткое описание под заголовком",
+  "icon": "article",
+  "order": 10,
+  "blocks": [
+    { "type": "heading", "text": "Заголовок раздела" },
+    { "type": "paragraph", "text": "Обычный текст. Можно выделить `встроенный код` обратными кавычками." },
+    { "type": "list", "items": ["Первый пункт", "Второй пункт"] },
+    { "type": "steps", "items": ["Первый шаг", "Второй шаг"] },
+    { "type": "code", "language": "bash", "text": "echo \"Привет\"" },
+    { "type": "note", "kind": "tip", "text": "kind может быть tip, warning или info." }
+  ]
+}

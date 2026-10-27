@@ -1,0 +1,67 @@
+{
+  "id": "html-css",
+  "title": "HTML и CSS",
+  "subtitle": "Семантика, блочная модель, Flexbox",
+  "icon": "html",
+  "order": 1,
+  "blocks": [
+    {
+      "type": "heading",
+      "text": "Семантическая разметка"
+    },
+    {
+      "type": "paragraph",
+      "text": "Используйте теги по смыслу: это помогает доступности и поисковикам."
+    },
+    {
+      "type": "code",
+      "language": "html",
+      "text": "<header>…</header>\n<nav>…</nav>\n<main>\n  <article>\n    <h1>Заголовок</h1>\n    <p>Текст статьи</p>\n  </article>\n</main>\n<footer>…</footer>"
+    },
+    {
+      "type": "heading",
+      "text": "Блочная модель"
+    },
+    {
+      "type": "paragraph",
+      "text": "У каждого элемента есть content, padding, border и margin. Чтобы width включал padding и рамку, задайте:"
+    },
+    {
+      "type": "code",
+      "language": "css",
+      "text": "*, *::before, *::after {\n  box-sizing: border-box;\n}"
+    },
+    {
+      "type": "heading",
+      "text": "Flexbox"
+    },
+    {
+      "type": "code",
+      "language": "css",
+      "text": ".row {\n  display: flex;\n  gap: 16px;\n  align-items: center;\n  justify-content: space-between;\n}"
+    },
+    {
+      "type": "heading",
+      "text": "Адаптивность"
+    },
+    {
+      "type": "code",
+      "language": "css",
+      "text": ".card { width: 100%; }\n\n@media (min-width: 768px) {\n  .card { width: 50%; }\n}"
+    },
+    {
+      "type": "note",
+      "kind": "tip",
+      "text": "Не забывайте в `<head>` строку `<meta name=\"viewport\" content=\"width=device-width, initial-scale=1\">`."
+    },
+    {
+      "type": "heading",
+      "text": "Переменные CSS и тёмная тема"
+    },
+    {
+      "type": "code",
+      "language": "css",
+      "text": ":root {\n  --bg: #ffffff;\n  --text: #0b1b33;\n}\n@media (prefers-color-scheme: dark) {\n  :root {\n    --bg: #050b1a;\n    --text: #e8f1ff;\n  }\n}\nbody { background: var(--bg); color: var(--text); }"
+    }
+  ]
+}

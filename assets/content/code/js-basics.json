@@ -1,0 +1,74 @@
+{
+  "id": "js-basics",
+  "title": "JavaScript: основы",
+  "subtitle": "Переменные, функции, массивы",
+  "icon": "data_object",
+  "order": 1,
+  "blocks": [
+    {
+      "type": "heading",
+      "text": "Переменные"
+    },
+    {
+      "type": "code",
+      "language": "javascript",
+      "text": "const name = 'Анна';   // нельзя переприсвоить\nlet count = 0;          // можно менять\ncount += 1;"
+    },
+    {
+      "type": "note",
+      "kind": "tip",
+      "text": "Не используйте `var`: у него неочевидная область видимости. Берите `const`, а `let` — только когда значение меняется."
+    },
+    {
+      "type": "heading",
+      "text": "Типы"
+    },
+    {
+      "type": "list",
+      "items": [
+        "string, number, boolean, null, undefined, bigint, symbol",
+        "object — в том числе массивы и функции"
+      ]
+    },
+    {
+      "type": "code",
+      "language": "javascript",
+      "text": "typeof 42;        // 'number'\ntypeof 'text';    // 'string'\n0.1 + 0.2;        // 0.30000000000000004"
+    },
+    {
+      "type": "heading",
+      "text": "Функции"
+    },
+    {
+      "type": "code",
+      "language": "javascript",
+      "text": "function sum(a, b) {\n  return a + b;\n}\n\nconst mul = (a, b) => a * b;"
+    },
+    {
+      "type": "heading",
+      "text": "Методы массивов"
+    },
+    {
+      "type": "code",
+      "language": "javascript",
+      "text": "const nums = [1, 2, 3, 4, 5];\n\nnums.map((n) => n * 2);            // [2, 4, 6, 8, 10]\nnums.filter((n) => n % 2 === 0);   // [2, 4]\nnums.reduce((s, n) => s + n, 0);   // 15"
+    },
+    {
+      "type": "heading",
+      "text": "Сравнение"
+    },
+    {
+      "type": "paragraph",
+      "text": "Всегда используйте строгое сравнение `===` и `!==`: оно не приводит типы."
+    },
+    {
+      "type": "heading",
+      "text": "Деструктуризация"
+    },
+    {
+      "type": "code",
+      "language": "javascript",
+      "text": "const user = { name: 'Анна', age: 25 };\nconst { name, age } = user;\nconst [first, ...rest] = [1, 2, 3];"
+    }
+  ]
+}

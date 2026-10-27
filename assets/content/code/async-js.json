@@ -1,0 +1,58 @@
+{
+  "id": "async-js",
+  "title": "Асинхронность",
+  "subtitle": "Promise, async/await, Promise.all",
+  "icon": "sync",
+  "order": 2,
+  "blocks": [
+    {
+      "type": "heading",
+      "text": "Зачем это нужно"
+    },
+    {
+      "type": "paragraph",
+      "text": "JavaScript выполняется в одном потоке. Долгие операции (сеть, файлы, таймеры) выполняются асинхронно, чтобы страница не зависала."
+    },
+    {
+      "type": "heading",
+      "text": "Promise"
+    },
+    {
+      "type": "code",
+      "language": "javascript",
+      "text": "fetch('/api/user')\n  .then((res) => res.json())\n  .then((user) => console.log(user))\n  .catch((err) => console.error(err));"
+    },
+    {
+      "type": "heading",
+      "text": "async / await"
+    },
+    {
+      "type": "paragraph",
+      "text": "Это более читаемая запись тех же Promise:"
+    },
+    {
+      "type": "code",
+      "language": "javascript",
+      "text": "async function getUser() {\n  try {\n    const res = await fetch('/api/user');\n    if (!res.ok) throw new Error(`HTTP ${res.status}`);\n    return await res.json();\n  } catch (err) {\n    console.error('Ошибка:', err);\n  }\n}"
+    },
+    {
+      "type": "heading",
+      "text": "Параллельные запросы"
+    },
+    {
+      "type": "code",
+      "language": "javascript",
+      "text": "const [users, posts] = await Promise.all([\n  fetch('/api/users').then((r) => r.json()),\n  fetch('/api/posts').then((r) => r.json()),\n]);"
+    },
+    {
+      "type": "note",
+      "kind": "tip",
+      "text": "Два `await` подряд выполняются по очереди. Если запросы независимы, запускайте их через `Promise.all`."
+    },
+    {
+      "type": "note",
+      "kind": "warning",
+      "text": "`fetch` не выбрасывает ошибку на 404 или 500 — проверяйте `res.ok` сами."
+    }
+  ]
+}

@@ -1,0 +1,79 @@
+{
+  "id": "git-branches",
+  "title": "Ветки и слияние",
+  "subtitle": "branch, switch, merge, конфликты, pull request",
+  "icon": "route",
+  "order": 2,
+  "blocks": [
+    {
+      "type": "heading",
+      "text": "Зачем ветки"
+    },
+    {
+      "type": "paragraph",
+      "text": "Ветка — отдельная линия разработки. Новую функцию делают в своей ветке, а в `main` она попадает после проверки."
+    },
+    {
+      "type": "code",
+      "language": "bash",
+      "text": "git switch -c feature/login   # создать и перейти\ngit switch main               # вернуться\ngit branch                    # список веток\ngit branch -d feature/login   # удалить слитую ветку"
+    },
+    {
+      "type": "heading",
+      "text": "Слияние"
+    },
+    {
+      "type": "code",
+      "language": "bash",
+      "text": "git switch main\ngit merge feature/login\ngit log --oneline --graph --all"
+    },
+    {
+      "type": "heading",
+      "text": "Конфликты"
+    },
+    {
+      "type": "paragraph",
+      "text": "Если одну строку изменили в обеих ветках, Git остановится и пометит файл:"
+    },
+    {
+      "type": "code",
+      "language": "text",
+      "text": "<<<<<<< HEAD\nваша версия\n=======\nчужая версия\n>>>>>>> feature/login"
+    },
+    {
+      "type": "steps",
+      "items": [
+        "Откройте файл и оставьте нужный вариант, удалив маркеры",
+        "`git add файл`",
+        "`git commit` — завершить слияние"
+      ]
+    },
+    {
+      "type": "heading",
+      "text": "Работа с удалённым репозиторием"
+    },
+    {
+      "type": "code",
+      "language": "bash",
+      "text": "git remote add origin git@github.com:user/repo.git\ngit push -u origin main\ngit pull\ngit fetch"
+    },
+    {
+      "type": "heading",
+      "text": "Pull request"
+    },
+    {
+      "type": "steps",
+      "items": [
+        "Создайте ветку и сделайте коммиты",
+        "`git push -u origin feature/login`",
+        "На GitHub откройте pull request в `main`",
+        "После ревью и слияния удалите ветку"
+      ]
+    },
+    {
+      "type": "note",
+      "kind": "warning",
+      "text": "Не делайте `git rebase` и `push --force` для веток, которыми уже пользуются другие."
+    }
+  ]
+}

@@ -1,0 +1,57 @@
+{
+  "id": "docker-basics",
+  "title": "Docker",
+  "subtitle": "Образы, контейнеры, Dockerfile, Compose",
+  "icon": "inventory",
+  "order": 1,
+  "blocks": [
+    {
+      "type": "heading",
+      "text": "Образ и контейнер"
+    },
+    {
+      "type": "list",
+      "items": [
+        "образ — «шаблон» с программой и её окружением",
+        "контейнер — запущенный экземпляр образа"
+      ]
+    },
+    {
+      "type": "heading",
+      "text": "Основные команды"
+    },
+    {
+      "type": "code",
+      "language": "bash",
+      "text": "docker run -d --name web -p 8080:80 nginx\ndocker ps\ndocker logs -f web\ndocker exec -it web sh\ndocker stop web && docker rm web\ndocker images"
+    },
+    {
+      "type": "heading",
+      "text": "Dockerfile"
+    },
+    {
+      "type": "code",
+      "language": "dockerfile",
+      "text": "FROM node:22-alpine\nWORKDIR /app\nCOPY package*.json ./\nRUN npm ci --omit=dev\nCOPY . .\nEXPOSE 3000\nCMD [\"node\", \"server.js\"]"
+    },
+    {
+      "type": "note",
+      "kind": "tip",
+      "text": "Копируйте `package*.json` и ставьте зависимости до `COPY . .`: тогда Docker переиспользует кэш, пока зависимости не менялись."
+    },
+    {
+      "type": "heading",
+      "text": "Docker Compose"
+    },
+    {
+      "type": "code",
+      "language": "yaml",
+      "text": "services:\n  web:\n    build: .\n    ports:\n      - \"3000:3000\"\n    depends_on:\n      - db\n  db:\n    image: postgres:16\n    environment:\n      POSTGRES_PASSWORD: example\n    volumes:\n      - pgdata:/var/lib/postgresql/data\n\nvolumes:\n  pgdata:"
+    },
+    {
+      "type": "code",
+      "language": "bash",
+      "text": "docker compose up -d\ndocker compose logs -f\ndocker compose down"
+    }
+  ]
+}

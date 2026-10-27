@@ -1,0 +1,62 @@
+{
+  "id": "rest-api",
+  "title": "REST API",
+  "subtitle": "Методы HTTP, коды ответов, JSON",
+  "icon": "api",
+  "order": 3,
+  "blocks": [
+    {
+      "type": "heading",
+      "text": "Что такое REST API"
+    },
+    {
+      "type": "paragraph",
+      "text": "REST API — договорённость о том, как клиент и сервер обмениваются данными по HTTP. Ресурсы адресуются URL, а действие определяется HTTP-методом."
+    },
+    {
+      "type": "heading",
+      "text": "Методы и ресурсы"
+    },
+    {
+      "type": "list",
+      "items": [
+        "`GET /posts` — список записей",
+        "`GET /posts/42` — одна запись",
+        "`POST /posts` — создать",
+        "`PUT /posts/42` или `PATCH /posts/42` — изменить",
+        "`DELETE /posts/42` — удалить"
+      ]
+    },
+    {
+      "type": "note",
+      "kind": "tip",
+      "text": "В URL используйте существительные во множественном числе (`/posts`), а не глаголы (`/getPosts`)."
+    },
+    {
+      "type": "heading",
+      "text": "Коды ответов"
+    },
+    {
+      "type": "list",
+      "items": [
+        "`200` OK, `201` Created, `204` No Content",
+        "`400` Bad Request, `401` Unauthorized, `403` Forbidden, `404` Not Found, `422` ошибка валидации",
+        "`500` — ошибка на сервере"
+      ]
+    },
+    {
+      "type": "heading",
+      "text": "Пример запроса"
+    },
+    {
+      "type": "code",
+      "language": "bash",
+      "text": "curl -X POST http://localhost:8000/api/posts \\\n  -H \"Content-Type: application/json\" \\\n  -d '{\"title\": \"Привет\"}'"
+    },
+    {
+      "type": "code",
+      "language": "json",
+      "text": "{\n  \"id\": 42,\n  \"title\": \"Привет\",\n  \"created_at\": \"2026-10-26T10:00:00Z\"\n}"
+    }
+  ]
+}

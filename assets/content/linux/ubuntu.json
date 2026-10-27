@@ -1,0 +1,81 @@
+{
+  "id": "ubuntu",
+  "title": "Ubuntu",
+  "subtitle": "Самый популярный дистрибутив: apt, sudo, файрвол",
+  "icon": "inventory",
+  "order": 1,
+  "blocks": [
+    {
+      "type": "heading",
+      "text": "Что это"
+    },
+    {
+      "type": "paragraph",
+      "text": "Ubuntu — дистрибутив на базе Debian от компании Canonical. Новые версии выходят раз в полгода, а каждые два года — LTS-релиз с долгосрочной поддержкой (минимум 5 лет обновлений безопасности). Для серверов и обучения берут именно LTS."
+    },
+    {
+      "type": "code",
+      "language": "bash",
+      "text": "lsb_release -a\ncat /etc/os-release"
+    },
+    {
+      "type": "heading",
+      "text": "Обновление системы"
+    },
+    {
+      "type": "code",
+      "language": "bash",
+      "text": "sudo apt update        # обновить список пакетов\nsudo apt upgrade       # обновить установленные пакеты\nsudo apt full-upgrade  # обновить, разрешив удаление/добавление зависимостей"
+    },
+    {
+      "type": "note",
+      "kind": "info",
+      "text": "`apt update` только скачивает список доступных версий, сами программы обновляет `apt upgrade`."
+    },
+    {
+      "type": "heading",
+      "text": "Установка и удаление пакетов"
+    },
+    {
+      "type": "code",
+      "language": "bash",
+      "text": "sudo apt install nginx\nsudo apt remove nginx      # удалить, конфиги останутся\nsudo apt purge nginx       # удалить вместе с конфигами\nsudo apt autoremove        # убрать ненужные зависимости\napt search postgres\napt show nginx"
+    },
+    {
+      "type": "heading",
+      "text": "Пользователи и sudo"
+    },
+    {
+      "type": "code",
+      "language": "bash",
+      "text": "sudo adduser dev\nsudo usermod -aG sudo dev\nid dev"
+    },
+    {
+      "type": "heading",
+      "text": "Файрвол UFW"
+    },
+    {
+      "type": "code",
+      "language": "bash",
+      "text": "sudo ufw allow OpenSSH\nsudo ufw allow 80,443/tcp\nsudo ufw enable\nsudo ufw status verbose"
+    },
+    {
+      "type": "note",
+      "kind": "warning",
+      "text": "Сначала разрешите SSH, и только потом включайте файрвол — иначе при работе по SSH можно отрезать себе доступ к серверу."
+    },
+    {
+      "type": "heading",
+      "text": "Snap"
+    },
+    {
+      "type": "paragraph",
+      "text": "Snap — формат пакетов от Canonical, программы ставятся вместе с зависимостями и обновляются сами."
+    },
+    {
+      "type": "code",
+      "language": "bash",
+      "text": "sudo snap install code --classic\nsnap list"
+    }
+  ]
+}

@@ -1,0 +1,90 @@
+{
+  "id": "bash-commands",
+  "title": "Команды Bash",
+  "subtitle": "Навигация, файлы, права, процессы, пайпы",
+  "icon": "terminal",
+  "order": 4,
+  "blocks": [
+    {
+      "type": "heading",
+      "text": "Навигация"
+    },
+    {
+      "type": "code",
+      "language": "bash",
+      "text": "pwd              # где я\nls -la           # список файлов, включая скрытые\ncd /var/log      # перейти в каталог\ncd ..            # на уровень выше\ncd -             # вернуться в предыдущий каталог\ncd ~             # домашний каталог"
+    },
+    {
+      "type": "heading",
+      "text": "Работа с файлами"
+    },
+    {
+      "type": "code",
+      "language": "bash",
+      "text": "mkdir -p projects/app/src   # создать вложенные каталоги\ntouch file.txt                # создать пустой файл\ncp -r src backup              # копировать каталог\nmv old.txt new.txt            # переименовать/переместить\nrm file.txt                   # удалить файл\ncat file.txt                  # вывести файл\nless big.log                  # листать (q — выход)\ntail -f app.log               # следить за концом файла"
+    },
+    {
+      "type": "note",
+      "kind": "warning",
+      "text": "`rm -rf` удаляет без подтверждения и без корзины. Дважды проверяйте путь, особенно с `sudo`."
+    },
+    {
+      "type": "heading",
+      "text": "Поиск"
+    },
+    {
+      "type": "code",
+      "language": "bash",
+      "text": "find . -name \"*.log\" -mtime -1   # логи, изменённые за последние сутки\ngrep -rn \"error\" /var/log        # искать текст в файлах\nwhich python3                    # где лежит программа"
+    },
+    {
+      "type": "heading",
+      "text": "Права доступа"
+    },
+    {
+      "type": "paragraph",
+      "text": "Права задаются для владельца, группы и остальных. Число складывается из `r`=4, `w`=2, `x`=1."
+    },
+    {
+      "type": "code",
+      "language": "bash",
+      "text": "ls -l script.sh\nchmod 755 script.sh     # rwxr-xr-x\nchmod +x script.sh      # сделать исполняемым\nsudo chown user:group file"
+    },
+    {
+      "type": "heading",
+      "text": "Процессы и службы"
+    },
+    {
+      "type": "code",
+      "language": "bash",
+      "text": "ps aux | grep nginx\ntop                       # или htop\nkill 1234                 # попросить завершиться\nkill -9 1234              # принудительно\nsystemctl status nginx\nsudo systemctl restart nginx\njournalctl -u nginx -f    # логи службы"
+    },
+    {
+      "type": "heading",
+      "text": "Пайпы и перенаправление"
+    },
+    {
+      "type": "list",
+      "items": [
+        "`|` — передать вывод одной команды на вход другой",
+        "`>` — записать вывод в файл (перезаписать)",
+        "`>>` — дописать в конец файла",
+        "`2>&1` — отправить ошибки туда же, куда обычный вывод"
+      ]
+    },
+    {
+      "type": "code",
+      "language": "bash",
+      "text": "ls -la | grep \".conf\"\necho \"hello\" > out.txt\n./job.sh >> job.log 2>&1"
+    },
+    {
+      "type": "heading",
+      "text": "Диск, память, сеть"
+    },
+    {
+      "type": "code",
+      "language": "bash",
+      "text": "df -h          # свободное место на дисках\ndu -sh *        # размер каждого элемента в каталоге\nfree -h         # память\nip a            # сетевые интерфейсы\nss -tulpn       # открытые порты и кто их слушает"
+    }
+  ]
+}

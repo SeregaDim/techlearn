@@ -1,0 +1,53 @@
+{
+  "id": "sql-joins",
+  "title": "JOIN: связи таблиц",
+  "subtitle": "INNER и LEFT JOIN, связь один-ко-многим",
+  "icon": "merge",
+  "order": 2,
+  "blocks": [
+    {
+      "type": "heading",
+      "text": "Идея"
+    },
+    {
+      "type": "paragraph",
+      "text": "Данные хранят в разных таблицах, а связывают по ключам. Например, `orders.user_id` ссылается на `users.id`."
+    },
+    {
+      "type": "code",
+      "language": "sql",
+      "text": "CREATE TABLE orders (\n  id      SERIAL PRIMARY KEY,\n  user_id INT NOT NULL REFERENCES users(id),\n  total   NUMERIC(10, 2) NOT NULL\n);"
+    },
+    {
+      "type": "heading",
+      "text": "INNER JOIN"
+    },
+    {
+      "type": "paragraph",
+      "text": "Только строки, у которых есть пара в обеих таблицах:"
+    },
+    {
+      "type": "code",
+      "language": "sql",
+      "text": "SELECT u.name, o.total\nFROM users u\nINNER JOIN orders o ON o.user_id = u.id;"
+    },
+    {
+      "type": "heading",
+      "text": "LEFT JOIN"
+    },
+    {
+      "type": "paragraph",
+      "text": "Все строки левой таблицы, даже если пары нет (тогда справа будет NULL):"
+    },
+    {
+      "type": "code",
+      "language": "sql",
+      "text": "SELECT u.name, COUNT(o.id) AS orders_count\nFROM users u\nLEFT JOIN orders o ON o.user_id = u.id\nGROUP BY u.id, u.name;"
+    },
+    {
+      "type": "note",
+      "kind": "tip",
+      "text": "Чтобы найти пользователей без заказов, добавьте `WHERE o.id IS NULL`."
+    }
+  ]
+}

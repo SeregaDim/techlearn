@@ -1,0 +1,51 @@
+{
+  "id": "ci-cd",
+  "title": "CI/CD",
+  "subtitle": "Автосборка и тесты через GitHub Actions",
+  "icon": "sync",
+  "order": 2,
+  "blocks": [
+    {
+      "type": "heading",
+      "text": "Идея"
+    },
+    {
+      "type": "list",
+      "items": [
+        "CI (Continuous Integration) — при каждом изменении автоматически собираем проект и гоняем тесты",
+        "CD (Continuous Delivery/Deployment) — автоматически выкладываем проверенную версию"
+      ]
+    },
+    {
+      "type": "heading",
+      "text": "Workflow GitHub Actions"
+    },
+    {
+      "type": "paragraph",
+      "text": "Файл кладётся в `.github/workflows/ci.yml`:"
+    },
+    {
+      "type": "code",
+      "language": "yaml",
+      "text": "name: CI\non:\n  push:\n    branches: [main]\n  pull_request:\n\njobs:\n  test:\n    runs-on: ubuntu-latest\n    steps:\n      - uses: actions/checkout@v4\n      - uses: actions/setup-node@v4\n        with:\n          node-version: 22\n      - run: npm ci\n      - run: npm test"
+    },
+    {
+      "type": "heading",
+      "text": "Секреты"
+    },
+    {
+      "type": "paragraph",
+      "text": "Пароли и токены храните в Settings → Secrets and variables → Actions и подставляйте так:"
+    },
+    {
+      "type": "code",
+      "language": "yaml",
+      "text": "env:\n  API_TOKEN: ${{ secrets.API_TOKEN }}"
+    },
+    {
+      "type": "note",
+      "kind": "warning",
+      "text": "Никогда не пишите секреты прямо в файл workflow и не выводите их в лог."
+    }
+  ]
+}

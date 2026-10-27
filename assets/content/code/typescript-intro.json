@@ -1,0 +1,54 @@
+{
+  "id": "typescript-intro",
+  "title": "TypeScript: старт",
+  "subtitle": "Типы, интерфейсы, union",
+  "icon": "code",
+  "order": 3,
+  "blocks": [
+    {
+      "type": "heading",
+      "text": "Что это"
+    },
+    {
+      "type": "paragraph",
+      "text": "TypeScript — JavaScript с типами. Ошибки находятся до запуска программы, а редактор лучше подсказывает."
+    },
+    {
+      "type": "code",
+      "language": "bash",
+      "text": "npm install -D typescript\nnpx tsc --init\nnpx tsc          # скомпилировать в JavaScript"
+    },
+    {
+      "type": "heading",
+      "text": "Базовые типы"
+    },
+    {
+      "type": "code",
+      "language": "typescript",
+      "text": "let name: string = 'Анна';\nlet age: number = 25;\nlet tags: string[] = ['ts', 'js'];\n\nfunction sum(a: number, b: number): number {\n  return a + b;\n}"
+    },
+    {
+      "type": "heading",
+      "text": "Интерфейсы"
+    },
+    {
+      "type": "code",
+      "language": "typescript",
+      "text": "interface User {\n  id: number;\n  name: string;\n  email?: string; // необязательное поле\n}\n\nconst u: User = { id: 1, name: 'Анна' };"
+    },
+    {
+      "type": "heading",
+      "text": "Union и литералы"
+    },
+    {
+      "type": "code",
+      "language": "typescript",
+      "text": "type Status = 'idle' | 'loading' | 'error';\n\nfunction show(id: number | string) {\n  if (typeof id === 'string') {\n    return id.toUpperCase();\n  }\n  return id.toFixed(0);\n}"
+    },
+    {
+      "type": "note",
+      "kind": "tip",
+      "text": "Избегайте `any`: он отключает проверку типов. Если тип неизвестен, используйте `unknown` и сузьте его проверкой."
+    }
+  ]
+}

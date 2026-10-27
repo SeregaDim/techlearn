@@ -1,0 +1,52 @@
+{
+  "id": "indexes",
+  "title": "Индексы",
+  "subtitle": "Как ускорять запросы и проверять план",
+  "icon": "speed",
+  "order": 3,
+  "blocks": [
+    {
+      "type": "heading",
+      "text": "Что такое индекс"
+    },
+    {
+      "type": "paragraph",
+      "text": "Индекс — отдельная структура, которая позволяет находить строки без полного перебора таблицы. Как оглавление в книге."
+    },
+    {
+      "type": "code",
+      "language": "sql",
+      "text": "CREATE INDEX idx_orders_user_id ON orders (user_id);"
+    },
+    {
+      "type": "heading",
+      "text": "Проверка плана"
+    },
+    {
+      "type": "code",
+      "language": "sql",
+      "text": "EXPLAIN ANALYZE\nSELECT * FROM orders WHERE user_id = 42;"
+    },
+    {
+      "type": "paragraph",
+      "text": "В плане ищите `Index Scan` (индекс используется) или `Seq Scan` (перебор всей таблицы)."
+    },
+    {
+      "type": "heading",
+      "text": "Когда индекс нужен"
+    },
+    {
+      "type": "list",
+      "items": [
+        "столбцы в `WHERE`, `JOIN` и `ORDER BY` больших таблиц",
+        "внешние ключи — PostgreSQL не создаёт для них индекс автоматически",
+        "`PRIMARY KEY` и `UNIQUE` индексируются сами"
+      ]
+    },
+    {
+      "type": "note",
+      "kind": "warning",
+      "text": "Индексы ускоряют чтение, но замедляют запись и занимают место. Не создавайте их «на всякий случай»."
+    }
+  ]
+}

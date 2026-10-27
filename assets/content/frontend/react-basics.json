@@ -1,0 +1,56 @@
+{
+  "id": "react-basics",
+  "title": "React: основы",
+  "subtitle": "Компоненты, props, состояние, эффекты",
+  "icon": "hub",
+  "order": 3,
+  "blocks": [
+    {
+      "type": "heading",
+      "text": "Компоненты"
+    },
+    {
+      "type": "paragraph",
+      "text": "React строит интерфейс из компонентов — функций, которые возвращают разметку (JSX)."
+    },
+    {
+      "type": "code",
+      "language": "jsx",
+      "text": "function Counter({ start = 0 }) {\n  const [count, setCount] = useState(start);\n  return (\n    <button onClick={() => setCount(count + 1)}>\n      Нажато: {count}\n    </button>\n  );\n}"
+    },
+    {
+      "type": "heading",
+      "text": "Props и состояние"
+    },
+    {
+      "type": "list",
+      "items": [
+        "props — данные, которые компонент получает от родителя; их не меняют",
+        "state — данные самого компонента; при изменении интерфейс перерисовывается"
+      ]
+    },
+    {
+      "type": "heading",
+      "text": "Списки и key"
+    },
+    {
+      "type": "code",
+      "language": "jsx",
+      "text": "<ul>\n  {todos.map((t) => (\n    <li key={t.id}>{t.title}</li>\n  ))}\n</ul>"
+    },
+    {
+      "type": "note",
+      "kind": "tip",
+      "text": "В `key` ставьте стабильный id, а не индекс массива, если список можно менять."
+    },
+    {
+      "type": "heading",
+      "text": "useEffect"
+    },
+    {
+      "type": "code",
+      "language": "jsx",
+      "text": "useEffect(() => {\n  fetch('/api/posts')\n    .then((r) => r.json())\n    .then(setPosts);\n}, []); // [] — выполнить один раз после первого рендера"
+    }
+  ]
+}
